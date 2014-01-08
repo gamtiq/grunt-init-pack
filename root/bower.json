@@ -1,0 +1,24 @@
+{
+  "name": "{%= name %}",
+  "main": [
+    "dist/{%= main_file %}.js", 
+    "dist/{%= main_file %}.min.js"
+  ],
+  "version": "{%= version %}",
+  "homepage": "{%= homepage %}",
+  "authors": [
+    "{%= author_name %}"
+  ],
+  "description": "{%= description %}",
+  "keywords": [
+{% _.forEach(keywords, function(item, index, list) { %}    {%= '"' + item + '"' + (index < list.length - 1 ? ',\n' : '') %}{% }); %}
+  ],
+  "license": "{%= licenses[0] %}",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

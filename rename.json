@@ -1,0 +1,5 @@
+{
+  "src/name.js": "src/{%= name %}.js",
+  "test/name.js": "test/{%= name %}.js",
+  "test/lib/mocha.*": "test/lib"
+}

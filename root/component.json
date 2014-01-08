@@ -1,0 +1,16 @@
+{
+  "name": "{%= name %}",
+  "repo": "{%= git_user %}/{%= name %}",
+  "description": "{%= description %}",
+  "version": "{%= version %}",
+  "keywords": [
+{% _.forEach(keywords, function(item, index, list) { %}    {%= '"' + item + '"' + (index < list.length - 1 ? ',\n' : '') %}{% }); %}
+  ],
+  "dependencies": {},
+  "development": {},
+  "license": "{%= licenses[0] %}",
+  "main": "{%= main %}.js",
+  "scripts": [
+    "{%= main %}.js"
+  ]
+}
