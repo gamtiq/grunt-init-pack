@@ -3,7 +3,8 @@
 var path = require("path");
 
 // Basic template description.
-exports.description = "Create a project module, including Nodeunit unit tests.";
+exports.description = "Create a project that has Node package and optionally Bower, Component, Jam and/or UMD package. " +
+    "Includes jshint, mocha+chai tests, jsdoc (optionally).";
 
 // Template-specific notes to be displayed before question prompts.
 exports.notes = "_Project name_ shouldn't contain \"node\" or \"js\" and should " +
@@ -11,7 +12,8 @@ exports.notes = "_Project name_ shouldn't contain \"node\" or \"js\" and should 
 
 // Template-specific notes to be displayed after question prompts.
 exports.after = "You should now install project dependencies with _npm " +
-    "install_. After that, you may execute project tasks with _grunt_. For " +
+    "install_ if you have not answered 'yes' to the corresponding question. " + 
+    "After that, you may execute project tasks with _grunt_. For " +
     "more information about installing and configuring Grunt, please see " +
     "the Getting Started guide:" +
     "\n\n" +
@@ -126,6 +128,12 @@ exports.template = function(grunt, init, done) {
                 message: "Would you like to include Grunt badge into README.md?",
                 "default": "Y/n",
                 sanitize: convertYesNo
+            },
+            {
+                name: "npm_install",
+                message: "Would you like to run `npm install` command automatically after initialization of the project?",
+                "default": "Y/n",
+                sanitize: convertYesNo
             }
         ], 
         function(err, props) {
@@ -163,7 +171,6 @@ exports.template = function(grunt, init, done) {
             if (! props.distrib) {
                 delete files["test/index.html"];
             }
-console.log("files: ", files, "\n");
         
             // Add properly-named license files.
             init.addLicenseFiles(files, props.licenses);
@@ -189,8 +196,21 @@ console.log("files: ", files, "\n");
                 return pkg;
             });
         
-            // All done!
-            done();
+            if (props.npm_install) {
+                console.log("\nnpm install...\n");
+                // Run npm install in project's directory
+                grunt.util.spawn({cmd: "npm", args: ["install"], 
+                                        opts: {cwd: init.destpath, stdio: "inherit"}}, 
+                    function(error, result, code) {
+                        // All done!
+                        done();
+                    });
+            }
+            else {
+                // All done!
+                done();
+            }
+            
   });
 
 };
