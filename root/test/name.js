@@ -3,24 +3,23 @@
 
 // Tests for {%= name %}
 describe("{%= name %}", function() {
-    var expect, pack;
+    var expect, {%= js_test_safe_name %};
     
     // node
     if (typeof chai === "undefined") {
-        pack = require("../src/{%= name %}.js");
+        {%= js_test_safe_name %} = require("../src/{%= name %}.js");
         expect = require("./lib/chai").expect;
     }
-    {% if (distrib) { %}
-    // browser
+    {% if (distrib) { %}// browser
     else {
-        pack = window.{%= name %};
+        {%= js_test_safe_name %} = window.{%= name %};
         expect = chai.expect;
     }
     {% } %}
     
     describe("suite 1", function() {
         it("should pass", function() {
-            expect(pack())
+            expect({%= js_test_safe_name %}())
                 .equal("awesome");
         });
     });

@@ -31,7 +31,7 @@ exports.template = function(grunt, init, done) {
 
     // Sanitize function for Yes/No values
     function convertYesNo(value, data, done) {
-        done( false, yesRegExp.test(value) );
+        done( false, value !== 'y/N' && yesRegExp.test(value) );
     }
     
     init.process({type: "node"}, 
@@ -114,7 +114,9 @@ exports.template = function(grunt, init, done) {
             {
                 name: "travis_badge",
                 message: "Would you like to include Travis build status badge into README.md?",
-                "default": "Y/n",
+                "default": function(value, data, done) {
+                    done(null, yesRegExp.test(data.travis) ? "Y/n" : "y/N");
+                },
                 sanitize: convertYesNo
             },
             {
