@@ -132,6 +132,12 @@ exports.template = function(grunt, init, done) {
                 sanitize: convertYesNo
             },
             {
+                name: "history_md",
+                message: "Would you like to include History.md in the project files?",
+                "default": "Y/n",
+                sanitize: convertYesNo
+            },
+            {
                 name: "npm_install",
                 message: "Would you like to run `npm install` command automatically after initialization of the project?",
                 "default": "Y/n",
@@ -172,6 +178,9 @@ exports.template = function(grunt, init, done) {
             }
             if (! props.distrib) {
                 delete files["test/index.html"];
+            }
+            if (! props.history_md) { 
+                delete files["History.md"]; 
             }
         
             // Add properly-named license files.
