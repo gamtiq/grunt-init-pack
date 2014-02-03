@@ -94,6 +94,10 @@ module.exports = function(grunt) {
     {% } %}
     {% if (jsdoc) { %}grunt.registerTask("doc", ["jsdoc"]);{% } %}
     grunt.registerTask("test", ["mochacli"]);
-    grunt.registerTask("default", ["jshint", "mochacli"]);
+    grunt.registerTask("default", ["jshint", "test"]);
     grunt.registerTask("all", ["default"{% if (distrib) { %}, "build"{% } %}{% if (jsdoc) { %}, "doc"{% } %}]);
+    {% if (travis) { %}
+    // For Travis CI service
+    grunt.registerTask("travis", ["all"]);
+    {% } %}
 };
