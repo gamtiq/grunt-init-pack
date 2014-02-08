@@ -61,6 +61,12 @@ exports.template = function(grunt, init, done) {
             init.prompt("main", function(value, data, done) {
                 done(null, "src/" + data.name);
             }),
+            {
+                name: "cli",
+                message: "Will this project have command-line interface?",
+                "default": "Y/n",
+                sanitize: convertYesNo
+            },
             init.prompt("npm_test", "grunt test"),
             {
                 name: "bower",
@@ -147,6 +153,7 @@ exports.template = function(grunt, init, done) {
         function(err, props) {
             props.main_file = path.basename(props.name, ".js");
             props.distrib = props.bower || props.jam || props.umd;
+            props.cli_name = props.name === "cli" ? "cui" : "cli";
             
             var devDepend = props.devDependencies = {
                 "grunt": ">=0.4.2",
@@ -165,6 +172,10 @@ exports.template = function(grunt, init, done) {
             // Files to copy (and process).
             if (! props.distrib) {
                 init.renames["test/lib/mocha.*"] = false;
+            }
+            if (! props.cli) {
+                init.renames["src/cli.js"] = false;
+                init.renames["bin/name"] = false;
             }
             var files = init.filesToCopy(props);
             if (! props.bower) { 
@@ -191,6 +202,9 @@ exports.template = function(grunt, init, done) {
         
             // Generate package.json file.
             init.writePackageJSON("package.json", props, function(pkg, props) {
+                if (props.cli) {
+                    (pkg.bin = {})[props.name] = "./bin/" + props.name;
+                }
                 if (props.jam) {
                     pkg.jam = {
                         "main": "dist/" + props.main_file + ".js",
