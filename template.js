@@ -64,7 +64,7 @@ exports.template = function(grunt, init, done) {
             {
                 name: "cli",
                 message: "Will this project have command-line interface?",
-                "default": "Y/n",
+                "default": "y/N",
                 sanitize: convertYesNo
             },
             init.prompt("npm_test", "grunt test"),
@@ -151,9 +151,13 @@ exports.template = function(grunt, init, done) {
             }
         ], 
         function(err, props) {
+            var renameMap = init.renames;
+            
             props.main_file = path.basename(props.name, ".js");
             props.distrib = props.bower || props.jam || props.umd;
             props.cli_name = props.name === "cli" ? "cui" : "cli";
+            props.copyright = grunt.template.process(grunt.file.read( init.srcpath("../snippet/copyright.tmpl") ), 
+                                                     {data: props, delimiters: 'init'});
             
             var devDepend = props.devDependencies = {
                 "grunt": ">=0.4.2",
@@ -171,26 +175,29 @@ exports.template = function(grunt, init, done) {
         
             // Files to copy (and process).
             if (! props.distrib) {
-                init.renames["test/lib/mocha.*"] = false;
+                renameMap["test/lib/mocha.*"] = false;
             }
             if (! props.cli) {
-                init.renames["src/cli.js"] = false;
-                init.renames["bin/name"] = false;
+                renameMap["src/cli.js"] = false;
+                renameMap["bin/name"] = false;
             }
             var files = init.filesToCopy(props);
-            if (! props.bower) { 
+            if (! props.bower) {
                 delete files["bower.json"]; 
             }
-            if (! props.component) { 
+            if (! props.component) {
                 delete files["component.json"]; 
             }
-            if (! props.travis) { 
+            if (! props.jsdoc) {
+                delete files["jsdoc-conf.json"];
+            }
+            if (! props.travis) {
                 delete files[".travis.yml"]; 
             }
             if (! props.distrib) {
                 delete files["test/index.html"];
             }
-            if (! props.history_md) { 
+            if (! props.history_md) {
                 delete files["History.md"]; 
             }
         

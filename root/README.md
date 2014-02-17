@@ -79,7 +79,7 @@ define(["path/to/dist/{%= main_file %}.js"], function({%= js_safe_name %}) {
 {% } %}
 ### Examples
 
-```javascript
+```js
 {%= js_safe_name %}(); // "awesome"
 ```
 
@@ -101,5 +101,5 @@ Lint and test your code using [Grunt](http://gruntjs.com/).
 _(Nothing yet)_
 
 ## License
-Copyright (c) {%= grunt.template.today('yyyy') %} {%= author_name %}  
+{%= copyright %}  
 Licensed under the {%= licenses.join(', ') %} license{%= licenses.length === 1 ? '' : 's' %}.

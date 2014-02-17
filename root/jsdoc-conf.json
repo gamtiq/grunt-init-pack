@@ -1,0 +1,17 @@
+{
+    "plugins": ["plugins/markdown"],
+
+    "markdown": {
+        "parser": "marked"
+    },
+    
+    "templates": {
+        "default": {
+            "outputSourceFiles": true
+        },
+        "systemName": "{%= name %}",
+        "copyright": "{%= copyright %}",
+        "theme": "spacelab",
+        "linenums": true
+    }
+}
