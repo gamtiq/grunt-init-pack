@@ -1,3 +1,9 @@
+### 0.0.4 / 2014-02-17
+
+* JSDoc template changed to [DocStrap](https://github.com/terryweiss/docstrap).
+* Added `jsdoc-conf.json`: support for markdown is enabled, `spacelab` theme from DocStrap is set.
+* Added copyright snippet.
+
 ### 0.0.3 / 2014-02-08
 
 * add Grunt task to simplify integration with Travis CI
