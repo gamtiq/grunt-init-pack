@@ -42,10 +42,6 @@ module.exports = function(grunt) {
         },
         {% } %}
         
-        mochacli: {
-            all: {}
-        }{% if (distrib) { %},{% } %}
-        
         {% if (distrib) { %}
         clean: {
             dist: {
@@ -75,20 +71,36 @@ module.exports = function(grunt) {
                 objectToExport: "module.exports",
                 globalAlias: "<%= name %>"
             }
-        }
+        },
         {% } %}
         
+        {% if (release_task) { %}
+        push: {
+            options: {
+                files: ["package.json"{% if (bower) { %}, "bower.json"{% } %}{% if (component) { %}, "component.json"{% } %}],
+                commitMessage: "Release version %VERSION%",
+                commitFiles: ["-a"],
+                tagName: "%VERSION%",
+                tagMessage: "Version %VERSION%"
+            }
+        },
+        {% } %}
+        
+        mochacli: {
+            all: {}
+        }
     });
     
     // Plugins
     grunt.loadNpmTasks("grunt-contrib-jshint");
+    grunt.loadNpmTasks("grunt-mocha-cli");
     {% if (distrib) { %}
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-umd");
     grunt.loadNpmTasks("grunt-contrib-uglify");
     {% } %}
     {% if (jsdoc) { %}grunt.loadNpmTasks("grunt-jsdoc");{% } %}
-    grunt.loadNpmTasks("grunt-mocha-cli");
+    {% if (release_task) { %}grunt.loadNpmTasks("grunt-push-release");{% } %}
     
     // Tasks
     {% if (distrib) { %}
@@ -98,6 +110,11 @@ module.exports = function(grunt) {
     grunt.registerTask("test", ["mochacli"]);
     grunt.registerTask("default", ["jshint", "test"]);
     grunt.registerTask("all", ["default"{% if (distrib) { %}, "build"{% } %}{% if (jsdoc) { %}, "doc"{% } %}]);
+    {% if (release_task) { %}
+    grunt.registerTask("release", ["push"]);
+    grunt.registerTask("release-minor", ["push:minor"]);
+    grunt.registerTask("release-major", ["push:major"]);
+    {% } %}
     {% if (travis) { %}
     // For Travis CI service
     grunt.registerTask("travis", ["all"]);

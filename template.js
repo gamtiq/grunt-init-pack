@@ -144,6 +144,12 @@ exports.template = function(grunt, init, done) {
                 sanitize: convertYesNo
             },
             {
+                name: "release_task",
+                message: "Would you like to include release tasks into Gruntfile?",
+                "default": "Y/n",
+                sanitize: convertYesNo
+            },
+            {
                 name: "npm_install",
                 message: "Would you like to run `npm install` command automatically after initialization of the project?",
                 "default": "Y/n",
@@ -171,6 +177,9 @@ exports.template = function(grunt, init, done) {
             }
             if (props.jsdoc) {
                 devDepend["grunt-jsdoc"] = ">=0.4.2";
+            }
+            if (props.release_task) {
+                devDepend["grunt-push-release"] = ">=0.1.8";
             }
         
             // Files to copy (and process).
