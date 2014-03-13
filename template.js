@@ -173,7 +173,7 @@ exports.template = function(grunt, init, done) {
             if (props.distrib) {
                 devDepend["grunt-contrib-clean"] = ">=0.5.0";
                 devDepend["grunt-contrib-uglify"] = ">=0.2.7";
-                devDepend["grunt-umd"] = ">=1.3.0";
+                devDepend["grunt-umd"] = ">=1.7.3";
             }
             if (props.jsdoc) {
                 devDepend["grunt-jsdoc"] = ">=0.4.2";
