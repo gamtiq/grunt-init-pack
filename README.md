@@ -3,8 +3,8 @@
 [grunt-init](http://gruntjs.com/project-scaffolding) template for a project that has Node package and optionally
 [Bower](http://bower.io), [Component](https://github.com/component/component), [Jam](http://jamjs.org)
 and/or [UMD](https://github.com/umdjs/umd) package.
-Includes [jshint](jshint.com), [mocha](http://visionmedia.github.io/mocha/)+[chai](http://chaijs.com) tests,
-[jsdoc](http://usejsdoc.org) (optionally).
+Includes [JSHint](jshint.com), [Mocha](http://visionmedia.github.io/mocha/)+[Chai](http://chaijs.com) tests,
+[JSDoc](http://usejsdoc.org) (optionally).
 
 ## Getting started
 
@@ -58,6 +58,40 @@ You might want to test that it works before you begin customizing the project:
 * run `npm install` to install the project's dependencies; it is necessary only if you have answered `no`
   to the corresponding question
 * run `grunt all` to build the project and test that it works
+
+## Redefining default prompt answers
+
+You can redefine default prompt answers using `defaults.json` file
+(see [here](http://gruntjs.com/project-scaffolding#specifying-default-prompt-answers) for details).
+Below supported prompt names are listed:
+
+* `name` - project name
+* `description` - project description
+* `keywords` - project keywords
+* `version` - initial version
+* `repository` - project repository
+* `homepage` - URL of project home page
+* `bugs` - URL of project issues tracker
+* `licenses` - project licenses
+* `author_name` - author name
+* `author_email` - author email
+* `author_url` - URL of author's site
+* `node_version` - minimal Node.js version
+* `main` - main file
+* `cli` - whether project should have command-line interface
+* `npm_test` - NPM test command
+* `bower` - whether project should have [Bower](http://bower.io) package
+* `component` - whether project should have [Component](https://github.com/component/component) package
+* `jam` - whether project should have [Jam](http://jamjs.org) package
+* `umd` - whether project should have AMD package or standalone script file
+* `jsdoc` - whether project should use [JSDoc](http://usejsdoc.org)
+* `travis` - whether support for [Travis CI](http://travis-ci.org) should be added
+* `travis_badge` - whether [Travis CI build status badge](http://docs.travis-ci.com/user/status-images/) should be included into `README.md`
+* `npm_badge` - whether [NPM version badge](https://badge.fury.io/for/js) should be included into `README.md`
+* `grunt_badge` - whether [Grunt badge](http://gruntjs.com/built-with-grunt-badge) should be included into `README.md`
+* `history_md` - to include or not `History.md` in the project files
+* `release_task` - to include or not release tasks into Gruntfile
+* `npm_install` - to run or not `npm install` command automatically
 
 ## License
 

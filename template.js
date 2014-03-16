@@ -34,12 +34,24 @@ exports.template = function(grunt, init, done) {
         done( false, value !== 'y/N' && yesRegExp.test(value) );
     }
     
+    // Return object describing prompt with specified options
+    function getPrompt(options) {
+        var prompt = init.prompt(options.name),
+            sName;
+        for (sName in options) {
+            if (! (sName in prompt)) {
+                prompt[sName] = options[sName];
+            }
+        }
+        return prompt;
+    }
+    
     init.process({type: "node"}, 
         [
             // Prompt for these values.
             init.prompt("name"),
             init.prompt("description"),
-            {
+            getPrompt({
                 name: "keywords",
                 message: "Project keywords (separated by space)",
                 sanitize: function(value, data, done) { 
@@ -48,7 +60,7 @@ exports.template = function(grunt, init, done) {
                                             .split(spaceRegExp)
                                     : []); 
                 }
-            },
+            }),
             init.prompt("version", "0.0.1"),
             init.prompt("repository"),
             init.prompt("homepage"),
@@ -61,26 +73,26 @@ exports.template = function(grunt, init, done) {
             init.prompt("main", function(value, data, done) {
                 done(null, "src/" + data.name);
             }),
-            {
+            getPrompt({
                 name: "cli",
                 message: "Will this project have command-line interface?",
                 "default": "y/N",
                 sanitize: convertYesNo
-            },
+            }),
             init.prompt("npm_test", "grunt test"),
-            {
+            getPrompt({
                 name: "bower",
                 message: "Will this project have Bower package?",
                 "default": "Y/n",
                 sanitize: convertYesNo
-            },
-            {
+            }),
+            getPrompt({
                 name: "component",
                 message: "Will this project have Component package?",
                 "default": "Y/n",
                 sanitize: convertYesNo
-            },
-            {
+            }),
+            getPrompt({
                 name: "jam",
                 message: "Will this project have Jam package? (Instead of 'yes' you can enter list of categories separated by space)",
                 "default": "Y/n",
@@ -97,64 +109,64 @@ exports.template = function(grunt, init, done) {
                     }
                     done(false, value);
                 }
-            },
-            {
+            }),
+            getPrompt({
                 name: "umd",
                 message: "Will this project have AMD package or standalone script file?",
                 "default": "Y/n",
                 sanitize: convertYesNo
-            },
-            {
+            }),
+            getPrompt({
                 name: "jsdoc",
                 message: "Will this project use JSDoc?",
                 "default": "Y/n",
                 sanitize: convertYesNo
-            },
-            {
+            }),
+            getPrompt({
                 name: "travis",
                 message: "Will this project be tested with Travis CI?",
                 "default": "Y/n",
                 warning: "If selected, you must enable Travis support for this project in https://travis-ci.org/profile",
                 sanitize: convertYesNo
-            },
-            {
+            }),
+            getPrompt({
                 name: "travis_badge",
-                message: "Would you like to include Travis build status badge into README.md?",
+                message: "Would you like to include Travis CI build status badge into README.md?",
                 "default": function(value, data, done) {
                     done(null, yesRegExp.test(data.travis) ? "Y/n" : "y/N");
                 },
                 sanitize: convertYesNo
-            },
-            {
+            }),
+            getPrompt({
                 name: "npm_badge",
                 message: "Would you like to include NPM version badge into README.md?",
                 "default": "Y/n",
                 sanitize: convertYesNo
-            },
-            {
+            }),
+            getPrompt({
                 name: "grunt_badge",
                 message: "Would you like to include Grunt badge into README.md?",
                 "default": "Y/n",
                 sanitize: convertYesNo
-            },
-            {
+            }),
+            getPrompt({
                 name: "history_md",
                 message: "Would you like to include History.md in the project files?",
                 "default": "Y/n",
                 sanitize: convertYesNo
-            },
-            {
+            }),
+            getPrompt({
                 name: "release_task",
                 message: "Would you like to include release tasks into Gruntfile?",
                 "default": "Y/n",
                 sanitize: convertYesNo
-            },
-            {
+            }),
+            getPrompt({
                 name: "npm_install",
                 message: "Would you like to run `npm install` command automatically after initialization of the project?",
                 "default": "Y/n",
                 sanitize: convertYesNo
-            }
+            })
         ], 
         function(err, props) {
             var renameMap = init.renames;
