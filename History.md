@@ -1,3 +1,9 @@
+### 0.0.5 / 2014-03-17
+
+* Added ability to include release tasks in Gruntfile
+* Added ability to redefine default prompt answers via [defaults.json](http://gruntjs.com/project-scaffolding#specifying-default-prompt-answers)
+* Minimal `grunt-umd` version is changed to `1.7.3`
+
 ### 0.0.4 / 2014-02-17
 
 * JSDoc template changed to [DocStrap](https://github.com/terryweiss/docstrap).
