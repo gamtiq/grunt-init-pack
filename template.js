@@ -24,6 +24,7 @@ exports.warnOn = "*";
 
 // The actual init template.
 exports.template = function(grunt, init, done) {
+    /*jshint camelcase:false, laxbreak:true, quotmark:false*/
     
     var yesRegExp = /^\s*y[es\s]*/i,
         spaceRegExp = /\s+/,
@@ -255,6 +256,7 @@ exports.template = function(grunt, init, done) {
                 grunt.util.spawn({cmd: "npm", args: ["install"], 
                                         opts: {cwd: init.destpath, stdio: "inherit"}}, 
                     function(error, result, code) {
+                        /*jshint unused:vars*/
                         // All done!
                         done();
                     });
