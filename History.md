@@ -1,3 +1,9 @@
+### 0.0.6 / 2014-05-28
+
+* Added ability to include contents of `package.json`/`bower.json`/`component.json` in Gruntfile configuration
+* Added ability to use [matchdep](https://github.com/tkellen/node-matchdep) to load plugins in Gruntfile
+* Default value of project version restored to 0.1.0
+
 ### 0.0.5 / 2014-03-17
 
 * Added ability to include release tasks in Gruntfile

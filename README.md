@@ -90,6 +90,8 @@ Below supported prompt names are listed:
 * `npm_badge` - whether [NPM version badge](https://badge.fury.io/for/js) should be included into `README.md`
 * `grunt_badge` - whether [Grunt badge](http://gruntjs.com/built-with-grunt-badge) should be included into `README.md`
 * `history_md` - to include or not `History.md` in the project files
+* `include_config` - to include or not `package.json`/`bower.json`/`component.json` in Gruntfile configuration
+* `matchdep` - to use or not [matchdep](https://github.com/tkellen/node-matchdep) module to simplify loading of plugins in Gruntfile
 * `release_task` - to include or not release tasks into Gruntfile
 * `npm_install` - to run or not `npm install` command automatically
 
