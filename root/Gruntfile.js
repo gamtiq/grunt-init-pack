@@ -1,11 +1,21 @@
 "use strict";
 
 module.exports = function(grunt) {
+    {% if (matchdep) { %}
+    var matchdep = require("matchdep");
+    {% } %}
     
     // Configuration
     grunt.initConfig({
+        {% if (include_config) { %}
+        pkg: grunt.file.readJSON("{%= include_config %}"),
         
+        name: "<%= pkg.name %>",
+        version: "<%= pkg.version %>",
+        {% } else { %}
         name: "{%= name %}",
+        {% } %}
+        
         mainFile: "{%= main_file %}",
         
         srcDir: "src",
@@ -92,6 +102,9 @@ module.exports = function(grunt) {
     });
     
     // Plugins
+    {% if (matchdep) { %}
+    matchdep.filterDev("grunt-*").forEach(grunt.loadNpmTasks);
+    {% } else { %}
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-mocha-cli");
     {% if (distrib) { %}
@@ -101,6 +114,7 @@ module.exports = function(grunt) {
     {% } %}
     {% if (jsdoc) { %}grunt.loadNpmTasks("grunt-jsdoc");{% } %}
     {% if (release_task) { %}grunt.loadNpmTasks("grunt-push-release");{% } %}
+    {% } %}
     
     // Tasks
     {% if (distrib) { %}

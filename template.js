@@ -62,7 +62,7 @@ exports.template = function(grunt, init, done) {
                                     : []); 
                 }
             }),
-            init.prompt("version", "0.0.1"),
+            init.prompt("version"),
             init.prompt("repository"),
             init.prompt("homepage"),
             init.prompt("bugs"),
@@ -157,6 +157,30 @@ exports.template = function(grunt, init, done) {
                 sanitize: convertYesNo
             }),
             getPrompt({
+                name: "include_config",
+                message: "Would you like to include contents of package.json in Gruntfile configuration? (Instead of 'yes' you can enter 'bower' or 'component' to include contents of the corresponding JSON-file)",
+                "default": "Y/n",
+                sanitize: function(value, data, done) {
+                    value = value.replace(trimRegExp, "");
+                    if ((value === "bower" && data.bower) || (value === "component" && data.component)) {
+                        value += ".json";
+                    }
+                    else if (/^no?$/i.test(value)) {
+                        value = "";
+                    }
+                    else {
+                        value = "package.json";
+                    }
+                    done(false, value);
+                }
+            }),
+            getPrompt({
+                name: "matchdep",
+                message: "Would you like to use matchdep module to simplify loading of plugins in Gruntfile?",
+                "default": "Y/n",
+                sanitize: convertYesNo
+            }),
+            getPrompt({
                 name: "release_task",
                 message: "Would you like to include release tasks into Gruntfile?",
                 "default": "Y/n",
@@ -190,6 +214,9 @@ exports.template = function(grunt, init, done) {
             }
             if (props.jsdoc) {
                 devDepend["grunt-jsdoc"] = ">=0.4.2";
+            }
+            if (props.matchdep) {
+                devDepend["matchdep"] = ">=0.3.0";
             }
             if (props.release_task) {
                 devDepend["grunt-push-release"] = ">=0.1.8";
