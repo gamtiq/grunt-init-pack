@@ -79,7 +79,8 @@ module.exports = function(grunt) {
                 dest: "<%= destDir %>/<%= mainFile %>.js",
                 template: "unit",
                 objectToExport: "module.exports",
-                globalAlias: "<%= name %>"
+                globalAlias: "<%= name %>",
+                indent: "    "
             }
         },
         {% } %}

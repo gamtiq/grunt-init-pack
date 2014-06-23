@@ -8,6 +8,8 @@
 
 
 /**
+ * {%= description %}
+ * 
  * @module {%= name %}
  */
 
