@@ -72,7 +72,7 @@ exports.template = function(grunt, init, done) {
             init.prompt("author_url"),
             init.prompt("node_version", ">= 0.10.0"),
             init.prompt("main", function(value, data, done) {
-                done(null, "src/" + data.name);
+                done(null, "src/" + path.basename(data.name, ".js") + ".js");
             }),
             getPrompt({
                 name: "cli",
@@ -110,6 +110,12 @@ exports.template = function(grunt, init, done) {
                     }
                     done(false, value);
                 }
+            }),
+            getPrompt({
+                name: "spm",
+                message: "Will this project have SPM package?",
+                "default": "Y/n",
+                sanitize: convertYesNo
             }),
             getPrompt({
                 name: "umd",
@@ -196,9 +202,17 @@ exports.template = function(grunt, init, done) {
         function(err, props) {
             var renameMap = init.renames;
             
-            props.main_file = path.basename(props.name, ".js");
+            if (path.extname(props.main) !== ".js") {
+                props.main += ".js";
+            }
+            props.source_dir = path.dirname(props.main);
+            props.main_file_name = path.basename(props.main, ".js");
+            props.main_file = props.main_file_name + ".js";
+            props.dist_file_name = path.basename(props.name, ".js");
+            props.dist_file = props.dist_file_name + ".js";
             props.distrib = props.bower || props.jam || props.umd;
             props.cli_name = props.name === "cli" ? "cui" : "cli";
+            props.cli_path = props.source_dir + "/" + props.cli_name + ".js";
             props.copyright = grunt.template.process(grunt.file.read( init.srcpath("../snippet/copyright.tmpl") ), 
                                                      {data: props, delimiters: 'init'});
             
@@ -232,22 +246,25 @@ exports.template = function(grunt, init, done) {
             }
             var files = init.filesToCopy(props);
             if (! props.bower) {
-                delete files["bower.json"]; 
+                delete files["bower.json"];
             }
             if (! props.component) {
-                delete files["component.json"]; 
+                delete files["component.json"];
+            }
+            if (! props.spm) {
+                delete files[".spmignore"];
             }
             if (! props.jsdoc) {
                 delete files["jsdoc-conf.json"];
             }
             if (! props.travis) {
-                delete files[".travis.yml"]; 
+                delete files[".travis.yml"];
             }
             if (! props.distrib) {
                 delete files["test/index.html"];
             }
             if (! props.history_md) {
-                delete files["History.md"]; 
+                delete files["History.md"];
             }
         
             // Add properly-named license files.
@@ -259,11 +276,11 @@ exports.template = function(grunt, init, done) {
             // Generate package.json file.
             init.writePackageJSON("package.json", props, function(pkg, props) {
                 if (props.cli) {
-                    (pkg.bin = {})[props.name] = "./bin/" + props.name;
+                    (pkg.bin = {})[props.dist_file_name] = "./bin/" + props.dist_file_name;
                 }
                 if (props.jam) {
                     pkg.jam = {
-                        "main": "dist/" + props.main_file + ".js",
+                        "main": "dist/" + props.dist_file,
                         "include": [
                             "dist",
                             "doc",
@@ -273,6 +290,14 @@ exports.template = function(grunt, init, done) {
                     if (Array.isArray(props.jam)) {
                         pkg.categories = props.jam;
                     }
+                }
+                if (props.spm) {
+                    pkg.spm = {
+                        "main": props.main,
+                        "engines": {
+                            "seajs": "2.2.1"
+                        }
+                    };
                 }
                 return pkg;
             });

@@ -1,7 +1,7 @@
 {
-  "src/name.js": "src/{%= name %}.js",
-  "src/cli.js": "src/{%= cli_name %}.js",
-  "bin/name": "bin/{%= name %}",
-  "test/name.js": "test/{%= name %}.js",
+  "src/name.js": "{%= main %}",
+  "src/cli.js": "{%= cli_path %}",
+  "bin/name": "bin/{%= dist_file_name %}",
+  "test/name.js": "test/{%= main_file %}",
   "test/lib/mocha.*": "test/lib"
 }

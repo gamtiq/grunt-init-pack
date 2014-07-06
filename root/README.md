@@ -30,15 +30,21 @@
     bower install {%= name %}
 
 {% } %}
+{% if (spm) { %}
+### [SPM](http://spmjs.io)
+
+    spm install {%= name %}
+
+{% } %}
 {% if (distrib) { %}
 ### AMD, &lt;script&gt;
 
-Use `dist/{%= main_file %}.js` or `dist/{%= main_file %}.min.js` (minified version).
+Use `dist/{%= dist_file %}` or `dist/{%= dist_file_name %}.min.js` (minified version).
 
 {% } %}
 ## Usage
 
-### Node{% if (component) { %}, Component{% } %}
+### Node{% if (component) { %}, Component{% } %}{% if (spm) { %}, SPM{% } %}
 
 ```js
 var {%= js_safe_name %} = require("{%= name %}");
@@ -58,7 +64,7 @@ require(["{%= name %}"], function({%= js_safe_name %}) {
 ### AMD
 
 ```js
-define(["path/to/dist/{%= main_file %}.js"], function({%= js_safe_name %}) {
+define(["path/to/dist/{%= dist_file %}"], function({%= js_safe_name %}) {
     ...
 });
 ```
@@ -67,11 +73,14 @@ define(["path/to/dist/{%= main_file %}.js"], function({%= js_safe_name %}) {
 
 ```html
 {% if (bower) { %}
-<!-- Use bower_components/{%= name %}/dist/{%= main_file %}.js if the library was installed by Bower -->
+<!-- Use bower_components/{%= name %}/dist/{%= dist_file %} if the library was installed by Bower -->
 {% } %}
-<script type="text/javascript" src="path/to/dist/{%= main_file %}.js"></script>
+<script type="text/javascript" src="path/to/dist/{%= dist_file %}"></script>
 <script type="text/javascript">
-    // {%= name %} is available via {%= js_safe_name %} field of window object
+    // {%= name %} is available via {%= name %} field of window object
+    {% if (name !== js_safe_name) { %}
+    var {%= js_safe_name %} = window["{%= name %}"];
+    {% } %}
     ...
 </script>
 ```

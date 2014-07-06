@@ -2,6 +2,7 @@ node_modules
 npm-debug.log
 .externalToolBuilders
 .settings
-.project
-{% if (component) { %}components
-build{% } %}
+.project{% if (component) { %}
+components
+build{% } %}{% if (spm) { %}
+sea-modules{% } %}

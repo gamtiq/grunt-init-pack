@@ -9,8 +9,8 @@
   "dependencies": {},
   "development": {},
   "license": "{%= licenses[0] %}",
-  "main": "{%= main %}.js",
+  "main": "{%= main %}",
   "scripts": [
-    "{%= main %}.js"
+    "{%= main %}"
   ]
 }

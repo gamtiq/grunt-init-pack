@@ -6,11 +6,11 @@
 </head>
 <body>
     <div id="mocha"></div>
-    <script src="../dist/{%= name %}.js"></script>
+    <script src="../dist/{%= dist_file %}"></script>
     <script src="lib/mocha.js"></script>
     <script src="lib/chai.js"></script>
     <script>mocha.setup('bdd');</script>
-    <script src="{%= name %}.js"></script>
+    <script src="{%= main_file %}"></script>
     <script>
         mocha.run();
     </script>

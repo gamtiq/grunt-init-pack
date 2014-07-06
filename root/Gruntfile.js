@@ -17,8 +17,9 @@ module.exports = function(grunt) {
         {% } %}
         
         mainFile: "{%= main_file %}",
+        distFile: "{%= dist_file %}",
         
-        srcDir: "src",
+        srcDir: "{%= source_dir %}",
         srcFiles: "**/*.js",
         src: "<%= srcDir %>/<%= srcFiles %>",
         
@@ -75,8 +76,8 @@ module.exports = function(grunt) {
         
         umd: {
             dist: {
-                src: "<%= srcDir %>/<%= mainFile %>.js",
-                dest: "<%= destDir %>/<%= mainFile %>.js",
+                src: "<%= srcDir %>/<%= mainFile %>",
+                dest: "<%= destDir %>/<%= distFile %>",
                 template: "unit",
                 objectToExport: "module.exports",
                 globalAlias: "<%= name %>",
