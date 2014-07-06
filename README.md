@@ -1,7 +1,7 @@
 # grunt-init-pack
 
 [grunt-init](http://gruntjs.com/project-scaffolding) template for a project that has Node package and optionally
-[Bower](http://bower.io), [Component](https://github.com/component/component), [Jam](http://jamjs.org)
+[Bower](http://bower.io), [Component](https://github.com/component/component), [Jam](http://jamjs.org), [SPM](http://spmjs.io)
 and/or [UMD](https://github.com/umdjs/umd) package.
 Includes [JSHint](jshint.com), [Mocha](http://visionmedia.github.io/mocha/)+[Chai](http://chaijs.com) tests,
 [JSDoc](http://usejsdoc.org) (optionally).

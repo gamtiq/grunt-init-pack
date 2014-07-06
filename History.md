@@ -1,3 +1,9 @@
+### 0.1.0 / 2014-07-06
+
+* Added ability to prepare [SPM](http://spmjs.io) package for created project
+* Updated versions of mocha & chai
+* Refactoring
+
 ### 0.0.6 / 2014-05-28
 
 * Added ability to include contents of `package.json`/`bower.json`/`component.json` in Gruntfile configuration
