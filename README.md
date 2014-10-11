@@ -96,6 +96,11 @@ Below supported prompt names are listed:
 * `release_task` - to include or not release tasks into Gruntfile
 * `npm_install` - to run or not `npm install` command automatically
 
+## Related projects
+
+* [grunt-pretest](https://github.com/gamtiq/grunt-pretest)
+* [grunt-uniator](https://github.com/gamtiq/grunt-uniator)
+
 ## License
 
 MIT
