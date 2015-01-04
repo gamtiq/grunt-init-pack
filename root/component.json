@@ -1,6 +1,6 @@
 {
   "name": "{%= name %}",
-  "repo": "{%= git_user %}/{%= name %}",
+  "repository": "{%= git_user %}/{%= name %}",
   "description": "{%= description %}",
   "version": "{%= version %}",
   "keywords": [
