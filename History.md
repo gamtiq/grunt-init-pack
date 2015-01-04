@@ -1,3 +1,7 @@
+### 0.1.1 / 2015-01-05
+
+* Updated `component.json` according to [specification](https://github.com/componentjs/spec/blob/master/component.json/specifications.md).
+
 ### 0.1.0 / 2014-07-06
 
 * Added ability to prepare [SPM](http://spmjs.io) package for created project
