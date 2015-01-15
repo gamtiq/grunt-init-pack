@@ -293,10 +293,7 @@ exports.template = function(grunt, init, done) {
                 }
                 if (props.spm) {
                     pkg.spm = {
-                        "main": props.main,
-                        "engines": {
-                            "seajs": "2.2.1"
-                        }
+                        "main": props.main
                     };
                 }
                 return pkg;
