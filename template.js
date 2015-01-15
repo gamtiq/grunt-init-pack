@@ -230,7 +230,7 @@ exports.template = function(grunt, init, done) {
                 devDepend["grunt-jsdoc"] = ">=0.4.2";
             }
             if (props.matchdep) {
-                devDepend["matchdep"] = ">=0.3.0";
+                devDepend.matchdep = ">=0.3.0";
             }
             if (props.release_task) {
                 devDepend["grunt-push-release"] = ">=0.1.8";

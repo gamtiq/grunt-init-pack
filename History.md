@@ -1,3 +1,8 @@
+### 0.1.2 / 2015-01-16
+
+* Updated SPM configuration according to [specification](http://spmjs.io/documentation/package.json).
+* Updated mocha to 2.1.0, chai to 1.10.0.
+
 ### 0.1.1 / 2015-01-05
 
 * Updated `component.json` according to [specification](https://github.com/componentjs/spec/blob/master/component.json/specifications.md).
