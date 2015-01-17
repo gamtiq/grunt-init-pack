@@ -13,7 +13,7 @@
     npm install {%= name %}
 
 {% if (component) { %}
-### [Component](https://github.com/component/component)
+### [Component](https://github.com/componentjs/component)
 
     component install {%= git_user %}/{%= name %}
 
