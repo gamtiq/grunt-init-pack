@@ -50,6 +50,14 @@ Use `dist/{%= dist_file %}` or `dist/{%= dist_file_name %}.min.js` (minified ver
 var {%= js_safe_name %} = require("{%= name %}");
 ```
 
+{% if (component) { %}
+### [Duo](http://duojs.org)
+
+```js
+var {%= js_safe_name %} = require("{%= git_user %}/{%= name %}");
+```
+
+{% } %}
 {% if (jam) { %}
 ### Jam
 

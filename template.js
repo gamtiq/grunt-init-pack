@@ -89,7 +89,7 @@ exports.template = function(grunt, init, done) {
             }),
             getPrompt({
                 name: "component",
-                message: "Will this project have Component package?",
+                message: "Will this project have Component/Duo package?",
                 "default": "Y/n",
                 sanitize: convertYesNo
             }),
