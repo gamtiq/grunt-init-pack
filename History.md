@@ -1,3 +1,8 @@
+### 0.1.3 / 2015-05-16
+
+* Added information about usage with [Duo](http://duojs.org).
+* Updated mocha to 2.2.4, chai to 2.1.0.
+
 ### 0.1.2 / 2015-01-16
 
 * Updated SPM configuration according to [specification](http://spmjs.io/documentation/package.json).
