@@ -80,6 +80,7 @@ Below supported prompt names are listed:
 * `main` - main file
 * `cli` - whether project should have command-line interface
 * `npm_test` - NPM test command
+* `esnext` - whether project should be prepared for using of ECMAScript 6 features
 * `bower` - whether project should have [Bower](http://bower.io) package
 * `component` - whether project should have [Component](https://github.com/componentjs/component) or [Duo](http://duojs.org) package
 * `jam` - whether project should have [Jam](http://jamjs.org) package

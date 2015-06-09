@@ -82,6 +82,12 @@ exports.template = function(grunt, init, done) {
             }),
             init.prompt("npm_test", "grunt test"),
             getPrompt({
+                name: "esnext",
+                message: "Will this project use ECMAScript 6 features?",
+                "default": "Y/n",
+                sanitize: convertYesNo
+            }),
+            getPrompt({
                 name: "bower",
                 message: "Will this project have Bower package?",
                 "default": "Y/n",

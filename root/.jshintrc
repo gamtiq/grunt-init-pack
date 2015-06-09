@@ -12,5 +12,6 @@
   "quotmark": true,
   "undef": true,
   "unused": true,
+  "esnext": {%= esnext %},
   "node": true
 }
