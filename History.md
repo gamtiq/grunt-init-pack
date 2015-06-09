@@ -1,3 +1,7 @@
+### 0.1.4 / 2015-06-09
+
+* Added question about use of ECMAScript 6 features.
+
 ### 0.1.3 / 2015-05-16
 
 * Added information about usage with [Duo](http://duojs.org).
