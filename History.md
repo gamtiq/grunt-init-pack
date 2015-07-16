@@ -1,3 +1,7 @@
+### 0.2.0 / 2015-07-16
+
+* `Licenses` prompt has replaced by `license` prompt (to conform to [npm package.json](https://docs.npmjs.com/files/package.json#license) requirements).
+
 ### 0.1.4 / 2015-06-09
 
 * Added question about use of ECMAScript 6 features.

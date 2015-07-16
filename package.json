@@ -1,6 +1,6 @@
 {
   "name": "grunt-init-pack",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "grunt-init template to create a project that has Node package and optionally Bower, Component, Duo, Jam and/or UMD package. Includes jshint, mocha+chai tests, jsdoc (optionally).",
   "main": "template.js",
   "repository": {
