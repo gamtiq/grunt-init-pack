@@ -8,7 +8,7 @@
   ],
   "dependencies": {},
   "development": {},
-  "license": "{%= licenses[0] %}",
+  "license": "{%= license %}",
   "main": "{%= main %}",
   "scripts": [
     "{%= main %}"

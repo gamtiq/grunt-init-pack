@@ -119,4 +119,4 @@ _(Nothing yet)_
 
 ## License
 {%= copyright %}  
-Licensed under the {%= licenses.join(', ') %} license{%= licenses.length === 1 ? '' : 's' %}.
+Licensed under the {%= license %} license.

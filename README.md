@@ -72,7 +72,7 @@ Below supported prompt names are listed:
 * `repository` - project repository
 * `homepage` - URL of project home page
 * `bugs` - URL of project issues tracker
-* `licenses` - project licenses
+* `license` - project licenses ([SPDX license ID](https://spdx.org/licenses/) or [expression](http://npmjs.com/package/spdx))
 * `author_name` - author name
 * `author_email` - author email
 * `author_url` - URL of author's site
@@ -80,7 +80,7 @@ Below supported prompt names are listed:
 * `main` - main file
 * `cli` - whether project should have command-line interface
 * `npm_test` - NPM test command
-* `esnext` - whether project should be prepared for using of ECMAScript 6 features
+* `esnext` - whether project should be prepared for using of ECMAScript 2015 features
 * `bower` - whether project should have [Bower](http://bower.io) package
 * `component` - whether project should have [Component](https://github.com/componentjs/component) or [Duo](http://duojs.org) package
 * `jam` - whether project should have [Jam](http://jamjs.org) package

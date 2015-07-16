@@ -66,7 +66,11 @@ exports.template = function(grunt, init, done) {
             init.prompt("repository"),
             init.prompt("homepage"),
             init.prompt("bugs"),
-            init.prompt("licenses"),
+            getPrompt({
+                name: "license",
+                message: "Project license(s) (should be SPDX expression)",
+                "default": "MIT"
+            }),
             init.prompt("author_name"),
             init.prompt("author_email"),
             init.prompt("author_url"),
@@ -83,7 +87,7 @@ exports.template = function(grunt, init, done) {
             init.prompt("npm_test", "grunt test"),
             getPrompt({
                 name: "esnext",
-                message: "Will this project use ECMAScript 6 features?",
+                message: "Will this project use ECMAScript 2015 features?",
                 "default": "Y/n",
                 sanitize: convertYesNo
             }),
@@ -251,6 +255,9 @@ exports.template = function(grunt, init, done) {
                 renameMap["bin/name"] = false;
             }
             var files = init.filesToCopy(props);
+            if (props.license !== "MIT") {
+                delete files["LICENSE-MIT"];
+            }
             if (! props.bower) {
                 delete files["bower.json"];
             }
@@ -273,14 +280,14 @@ exports.template = function(grunt, init, done) {
                 delete files["History.md"];
             }
         
-            // Add properly-named license files.
-            init.addLicenseFiles(files, props.licenses);
-        
             // Actually copy (and process) files.
             init.copyAndProcess(files, props);
         
             // Generate package.json file.
             init.writePackageJSON("package.json", props, function(pkg, props) {
+                if (props.license) {
+                    pkg.license = props.license;
+                }
                 if (props.cli) {
                     (pkg.bin = {})[props.dist_file_name] = "./bin/" + props.dist_file_name;
                 }

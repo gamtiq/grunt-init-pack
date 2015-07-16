@@ -13,7 +13,7 @@
   "keywords": [
 {% _.forEach(keywords, function(item, index, list) { %}    {%= '"' + item + '"' + (index < list.length - 1 ? ',\n' : '') %}{% }); %}
   ],
-  "license": "{%= licenses[0] %}",
+  "license": "{%= license %}",
   "ignore": [
     "**/.*",
     "node_modules",
