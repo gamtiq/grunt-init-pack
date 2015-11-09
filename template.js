@@ -1,6 +1,14 @@
 "use strict";
 
-var path = require("path");
+var path = require("path"),
+    sAfterNote = " may execute project tasks with _grunt_. For " +
+                 "more information about installing and configuring Grunt, please see " +
+                 "the Getting Started guide:" +
+                 "\n\n" +
+                 "http://gruntjs.com/getting-started",
+    sAfterInit = "You should now install project dependencies with _npm install_. " +
+                 "After that, you" + sAfterNote,
+    sAfterInstall = "You" + sAfterNote;
 
 // Basic template description.
 exports.description = "Create a project that has Node package and optionally Bower, Component, Jam and/or UMD package. " +
@@ -11,13 +19,7 @@ exports.notes = "_Project name_ shouldn't contain \"node\" or \"js\" and should 
     "be a unique ID not already in use at search.npmjs.org.";
 
 // Template-specific notes to be displayed after question prompts.
-exports.after = "You should now install project dependencies with _npm " +
-    "install_ if you have not answered 'yes' to the corresponding question. " + 
-    "After that, you may execute project tasks with _grunt_. For " +
-    "more information about installing and configuring Grunt, please see " +
-    "the Getting Started guide:" +
-    "\n\n" +
-    "http://gruntjs.com/getting-started";
+exports.after = sAfterInit;
 
 // Any existing file or directory matching this wildcard will cause a warning.
 exports.warnOn = "*";
@@ -313,6 +315,7 @@ exports.template = function(grunt, init, done) {
             });
         
             if (props.npm_install) {
+                exports.after = sAfterInstall;
                 console.log("\nnpm install...\n");
                 // Run npm install in project's directory
                 grunt.util.spawn({cmd: "npm", args: ["install"], 
@@ -324,6 +327,7 @@ exports.template = function(grunt, init, done) {
                     });
             }
             else {
+                exports.after = sAfterInit;
                 // All done!
                 done();
             }
