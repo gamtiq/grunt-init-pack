@@ -1,3 +1,8 @@
+### 0.2.1 / 2015-11-09
+
+* Add table of contents into README.md.
+* Display final (`after`) message depending on `npm_install` prompt.
+
 ### 0.2.0 / 2015-07-16
 
 * `Licenses` prompt has replaced by `license` prompt (to conform to [npm package.json](https://docs.npmjs.com/files/package.json#license) requirements).
