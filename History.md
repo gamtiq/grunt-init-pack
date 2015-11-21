@@ -1,3 +1,8 @@
+### 0.2.2 / 2015-11-21
+
+* Update version of [grunt-jsdoc](https://github.com/krampstudio/grunt-jsdoc), add [ink-docstrap](https://github.com/terryweiss/docstrap) dependency.
+* Fix [#1](https://github.com/gamtiq/grunt-init-pack/issues/1).
+
 ### 0.2.1 / 2015-11-09
 
 * Add table of contents into README.md.
