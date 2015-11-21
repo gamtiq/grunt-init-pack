@@ -239,7 +239,8 @@ exports.template = function(grunt, init, done) {
                 devDepend["grunt-umd"] = ">=1.7.3";
             }
             if (props.jsdoc) {
-                devDepend["grunt-jsdoc"] = ">=0.4.2";
+                devDepend["grunt-jsdoc"] = ">=1.0.0";
+                devDepend["ink-docstrap"] = ">=0.5.2";
             }
             if (props.matchdep) {
                 devDepend.matchdep = ">=0.3.0";
