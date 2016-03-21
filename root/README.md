@@ -38,12 +38,6 @@
     bower install {%= name %}
 
 {% } %}
-{% if (spm) { %}
-### [SPM](http://spmjs.io)
-
-    spm install {%= name %}
-
-{% } %}
 {% if (distrib) { %}
 ### AMD, &lt;script&gt;
 
@@ -52,7 +46,7 @@ Use `dist/{%= dist_file %}` or `dist/{%= dist_file_name %}.min.js` (minified ver
 {% } %}
 ## Usage <a name="usage"></a> [&#x2191;](#start)
 
-### Node{% if (component) { %}, Component{% } %}{% if (spm) { %}, SPM{% } %}
+### Node{% if (component) { %}, Component{% } %}
 
 ```js
 var {%= js_safe_name %} = require("{%= name %}");

@@ -4,5 +4,4 @@ npm-debug.log
 .settings
 .project{% if (component) { %}
 components
-build{% } %}{% if (spm) { %}
-sea-modules{% } %}
+build{% } %}

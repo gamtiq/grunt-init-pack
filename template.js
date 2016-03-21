@@ -124,12 +124,6 @@ exports.template = function(grunt, init, done) {
                 }
             }),
             getPrompt({
-                name: "spm",
-                message: "Will this project have SPM package?",
-                "default": "Y/n",
-                sanitize: convertYesNo
-            }),
-            getPrompt({
                 name: "umd",
                 message: "Will this project have AMD package or standalone script file?",
                 "default": "Y/n",
@@ -267,9 +261,6 @@ exports.template = function(grunt, init, done) {
             if (! props.component) {
                 delete files["component.json"];
             }
-            if (! props.spm) {
-                delete files[".spmignore"];
-            }
             if (! props.jsdoc) {
                 delete files["jsdoc-conf.json"];
             }
@@ -306,11 +297,6 @@ exports.template = function(grunt, init, done) {
                     if (Array.isArray(props.jam)) {
                         pkg.categories = props.jam;
                     }
-                }
-                if (props.spm) {
-                    pkg.spm = {
-                        "main": props.main
-                    };
                 }
                 return pkg;
             });

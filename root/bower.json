@@ -18,8 +18,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    {% if (spm) { %}"sea-modules",
-    {% } %}"test",
+    "test",
     "tests"
   ]
 }
