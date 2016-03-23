@@ -76,7 +76,7 @@ exports.template = function(grunt, init, done) {
             init.prompt("author_name"),
             init.prompt("author_email"),
             init.prompt("author_url"),
-            init.prompt("node_version", ">= 0.10.0"),
+            init.prompt("node_version", ">= 0.12.0"),
             init.prompt("main", function(value, data, done) {
                 done(null, "src/" + path.basename(data.name, ".js") + ".js");
             }),
