@@ -1,3 +1,9 @@
+### 0.3.0 / 2016-03-24
+
+* Remove SPM support.
+* Update mocha to 2.4.5, chai to 3.5.0.
+* Change minimal version of node.js for generated projects up to 0.12.
+
 ### 0.2.2 / 2015-11-21
 
 * Update version of [grunt-jsdoc](https://github.com/krampstudio/grunt-jsdoc), add [ink-docstrap](https://github.com/terryweiss/docstrap) dependency.
