@@ -106,24 +106,6 @@ exports.template = function(grunt, init, done) {
                 sanitize: convertYesNo
             }),
             getPrompt({
-                name: "jam",
-                message: "Will this project have Jam package? (Instead of 'yes' you can enter list of categories separated by space)",
-                "default": "Y/n",
-                sanitize: function(value, data, done) {
-                    value = value.replace(trimRegExp, "");
-                    if (/^no?$/i.test(value)) {
-                        value = false;
-                    }
-                    else if (yesRegExp.test(value)) {
-                        value = true;
-                    }
-                    else {
-                        value = value.split(spaceRegExp);
-                    }
-                    done(false, value);
-                }
-            }),
-            getPrompt({
                 name: "umd",
                 message: "Will this project have AMD package or standalone script file?",
                 "default": "Y/n",
@@ -216,7 +198,7 @@ exports.template = function(grunt, init, done) {
             props.main_file = props.main_file_name + ".js";
             props.dist_file_name = path.basename(props.name, ".js");
             props.dist_file = props.dist_file_name + ".js";
-            props.distrib = props.bower || props.jam || props.umd;
+            props.distrib = props.bower || props.umd;
             props.cli_name = props.name === "cli" ? "cui" : "cli";
             props.cli_path = props.source_dir + "/" + props.cli_name + ".js";
             props.copyright = grunt.template.process(grunt.file.read( init.srcpath("../snippet/copyright.tmpl") ), 
@@ -284,19 +266,6 @@ exports.template = function(grunt, init, done) {
                 }
                 if (props.cli) {
                     (pkg.bin = {})[props.dist_file_name] = "./bin/" + props.dist_file_name;
-                }
-                if (props.jam) {
-                    pkg.jam = {
-                        "main": "dist/" + props.dist_file,
-                        "include": [
-                            "dist",
-                            "doc",
-                            "README.md"
-                        ]
-                    };
-                    if (Array.isArray(props.jam)) {
-                        pkg.categories = props.jam;
-                    }
                 }
                 return pkg;
             });

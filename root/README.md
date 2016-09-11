@@ -26,12 +26,6 @@
     component install {%= git_user %}/{%= name %}
 
 {% } %}
-{% if (jam) { %}
-### [Jam](http://jamjs.org)
-
-    jam install {%= name %}
-
-{% } %}
 {% if (bower) { %}
 ### [Bower](http://bower.io)
 
@@ -57,16 +51,6 @@ var {%= js_safe_name %} = require("{%= name %}");
 
 ```js
 var {%= js_safe_name %} = require("{%= git_user %}/{%= name %}");
-```
-
-{% } %}
-{% if (jam) { %}
-### Jam
-
-```js
-require(["{%= name %}"], function({%= js_safe_name %}) {
-    ...
-});
 ```
 
 {% } %}

@@ -1,8 +1,7 @@
 # grunt-init-pack
 
 [grunt-init](http://gruntjs.com/project-scaffolding) template for a project that can have Node package and optionally
-[Bower](http://bower.io), [Component](https://github.com/componentjs/component), [Duo](http://duojs.org),
-[Jam](http://jamjs.org) and/or [UMD](https://github.com/umdjs/umd) package.
+[Bower](http://bower.io), [Component/Duo](http://duojs.org) and/or [UMD](https://github.com/umdjs/umd) package.
 Includes [JSHint](jshint.com), [Mocha](http://visionmedia.github.io/mocha/)+[Chai](http://chaijs.com) tests,
 [JSDoc](http://usejsdoc.org) (optionally).
 
@@ -82,8 +81,7 @@ Below supported prompt names are listed:
 * `npm_test` - NPM test command
 * `esnext` - whether project should be prepared for using of ECMAScript 2015 features
 * `bower` - whether project should have [Bower](http://bower.io) package
-* `component` - whether project should have [Component](https://github.com/componentjs/component) or [Duo](http://duojs.org) package
-* `jam` - whether project should have [Jam](http://jamjs.org) package
+* `component` - whether project should have [Component/Duo](http://duojs.org) package
 * `umd` - whether project should have AMD package or standalone script file
 * `jsdoc` - whether project should use [JSDoc](http://usejsdoc.org)
 * `travis` - whether support for [Travis CI](http://travis-ci.org) should be added
