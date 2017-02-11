@@ -2,7 +2,7 @@
 
 [grunt-init](http://gruntjs.com/project-scaffolding) template for a project that can have Node package and optionally
 [Bower](http://bower.io), [Component/Duo](http://duojs.org) and/or [UMD](https://github.com/umdjs/umd) package.
-Includes [JSHint](jshint.com), [Mocha](http://visionmedia.github.io/mocha/)+[Chai](http://chaijs.com) tests,
+Includes [JSHint](jshint.com), [Mocha](http://mochajs.org/)+[Chai](http://chaijs.com) tests,
 [JSDoc](http://usejsdoc.org) (optionally).
 
 ## Getting started
